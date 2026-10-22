@@ -7,11 +7,13 @@ Run with:  uvicorn app.main:app --reload
 Docs at:   http://localhost:8000/docs
 """
 
+import os
 from datetime import date, timedelta
 from enum import Enum
 from typing import Optional
 
 from fastapi import Depends, FastAPI, HTTPException, Query, status
+from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 
 from . import models, schemas
@@ -20,6 +22,27 @@ from .database import Base, engine, get_db
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Job Application Tracker", version="1.0.0")
+
+# The React frontend runs on a different origin; allow it in development
+# (Vite dev server) and in production (the deployed static site). Override
+# with the ALLOWED_ORIGINS env var (comma-separated) when needed.
+_default_origins = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "https://job-application-tracker-web.onrender.com",
+]
+_env_origins = os.environ.get("ALLOWED_ORIGINS", "")
+ALLOWED_ORIGINS = (
+    [origin.strip() for origin in _env_origins.split(",") if origin.strip()]
+    if _env_origins.strip()
+    else _default_origins
+)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=ALLOWED_ORIGINS,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 class SortField(str, Enum):
