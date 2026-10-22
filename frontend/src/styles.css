@@ -1,0 +1,143 @@
+:root {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: #1c2430;
+  background: #f4f6f9;
+}
+
+* { box-sizing: border-box; }
+
+body { margin: 0; }
+
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+header h1 { margin: 0 0 4px; font-size: 1.8rem; }
+.subtitle { margin: 0 0 20px; color: #5b6572; }
+
+.error-banner {
+  background: #fdecec;
+  border: 1px solid #f3b8b8;
+  color: #8f1d1d;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  background: #fff;
+  border: 1px solid #dde3ea;
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.stat-card.total { border-color: #2f6fed; }
+.stat-card.follow-ups { border-color: #e8a13a; }
+.stat-number { font-size: 1.5rem; font-weight: 700; }
+.stat-label { font-size: 0.78rem; color: #5b6572; text-transform: capitalize; text-align: center; }
+
+.panel {
+  background: #fff;
+  border: 1px solid #dde3ea;
+  border-radius: 10px;
+  padding: 18px;
+  margin-bottom: 20px;
+}
+
+.panel h2 { margin: 0 0 14px; font-size: 1.15rem; }
+
+.app-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.app-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.app-form .wide { grid-column: 1 / -1; }
+
+input, select, textarea {
+  font: inherit;
+  font-weight: 400;
+  padding: 8px 10px;
+  border: 1px solid #c4cdd8;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.form-actions { display: flex; gap: 8px; align-items: end; }
+
+button {
+  font: inherit;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  background: #2f6fed;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover { background: #245ecf; }
+button.secondary { background: #e7ecf3; color: #1c2430; }
+button.secondary:hover { background: #d8e0ec; }
+button.danger { background: #e05252; }
+button.danger:hover { background: #c73e3e; }
+
+.list-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.list-header h2 { margin: 0; }
+.filters { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.apps-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+.apps-table th, .apps-table td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid #e6ebf1;
+}
+.apps-table th { color: #5b6572; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.03em; }
+.row-actions { display: flex; gap: 6px; }
+.row-actions button { padding: 4px 10px; font-size: 0.85rem; }
+
+.badge {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  background: #e7ecf3;
+  color: #33404f;
+}
+.status-wishlist  { background: #ece7f5; color: #5b3ea8; }
+.status-applied   { background: #e2ecfd; color: #245ecf; }
+.status-screening { background: #fdf3d7; color: #8a6d1a; }
+.status-interview { background: #ffe8cc; color: #9a5b13; }
+.status-offer     { background: #d8f3dc; color: #1e6b34; }
+.status-rejected  { background: #fde2e2; color: #9c2222; }
+.status-withdrawn { background: #e5e7eb; color: #4b5563; }
