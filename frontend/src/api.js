@@ -1,7 +1,12 @@
 // Small client for the Job Application Tracker API.
-// In development, Vite proxies these paths to the FastAPI backend.
-// Set VITE_API_BASE to point at a separately hosted API if needed.
-const API_BASE = import.meta.env.VITE_API_BASE || "";
+// In development, Vite proxies these paths to the FastAPI backend, so
+// relative URLs are used. In production builds, set VITE_API_URL to the
+// API's absolute base URL (the legacy VITE_API_BASE name still works).
+const API_BASE = (
+  import.meta.env.VITE_API_URL ||
+  import.meta.env.VITE_API_BASE ||
+  ""
+).replace(/\/$/, "");
 
 async function request(path, options = {}) {
   const response = await fetch(`${API_BASE}${path}`, {
